@@ -1,0 +1,159 @@
+import React from 'react';
+import { 
+  AppBar, 
+  Toolbar, 
+  Typography, 
+  Button, 
+  Box,
+  IconButton
+} from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext';
+import DarkModeIcon from '@mui/icons-material/DarkMode'; // Ay ikonu
+import WbSunnyIcon from '@mui/icons-material/WbSunny'; // Güneş ikonu
+
+const Header = ({ darkMode, setDarkMode }) => {
+  const { currentUser, logout } = useAuth();
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    logout();
+    navigate('/');
+  };
+
+  // Ortak buton stili
+  const buttonStyle = {
+    color: darkMode ? 'white' : 'white', // Sıcak kahverengi
+    border: `1px solid ${darkMode ? 'white' : 'white'}`,
+    '&:hover': {
+      color: darkMode ? '#ff7f50' : '#FFB6C1', // Mercan rengi
+      backgroundColor: darkMode 
+        ? 'rgba(255,127,80,0.1)'
+        : 'rgba(255,255,255,0.1)'
+    },
+    fontFamily: 'Comic Sans MS',
+    fontSize: '16px',
+    textTransform: 'none',
+    padding: '8px 16px',
+    borderRadius: '20px'
+  };
+
+  return (
+    // Header.js
+<AppBar position="static" sx={{ 
+  background: darkMode 
+    ? 'linear-gradient(90deg,rgba(10, 33, 110, 0.8),rgb(125, 139, 219),rgb(107, 190, 238))' // Sıcak pembe-turuncu-sarı gradient
+    : 'linear-gradient(90deg, #FF0000,rgba(255, 166, 0, 0.92), #FFFF00, #8B00FF, #00FF00, #0000FF, #4B0082)',
+  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+}}>
+      <Toolbar sx={{ 
+        display: 'flex', 
+        flexDirection: 'column',
+        padding: '10px 0',
+      }}>
+        {/* Site Başlığı */}
+        <Box sx={{ 
+          display: 'flex', 
+          width: '100%',
+          justifyContent: 'center',
+          marginBottom: '10px',
+          alignItems: 'center',
+          gap: 2
+        }}>
+          <Typography 
+    variant="h3" 
+    sx={{ 
+      fontFamily: 'Brush Script MT, cursive',
+      color: darkMode ? '#fff' : '#FFA500', // Sıcak somon rengi
+      textShadow: darkMode 
+        ? '2px 2px 4px rgba(0, 0, 0, 0.2)'
+        : '2px 2px 4px rgba(0,0,0,0.2)',
+      fontSize: '48px'
+    }}
+  >
+    Masal Dünyası
+  </Typography>
+          
+          {/* Gece Modu Butonu */}
+          <IconButton 
+  onClick={() => setDarkMode(!darkMode)}
+  sx={{ 
+    color: 'yellow',
+    border: '1px solid white',
+    '&:hover': {
+      backgroundColor: 'rgba(255, 255, 255, 0.86)'
+    }
+  }}
+>
+  {darkMode ? <WbSunnyIcon /> : <DarkModeIcon />}
+</IconButton>
+
+        </Box>
+
+        {/* Navigasyon Menüsü */}
+        <Box sx={{ 
+          display: 'flex', 
+          justifyContent: 'space-between',
+          width: '100%',
+          alignItems: 'center'
+        }}>
+          {/* Sol taraftaki ana menü */}
+          <Box sx={{ display: 'flex', gap: 2, color:'white' }}>
+            {[
+              { title: 'Ana Sayfa', path: '/anasayfa' },
+              { title: 'Masal Dinle', path: '/dinle' },
+              { title: 'Masal Oku', path: '/oku' }
+            ].map((item) => (
+              <Button 
+                key={item.path}
+                component={Link} 
+                to={item.path}
+                sx={buttonStyle}
+              >
+                {item.title}
+              </Button>
+            ))}
+          </Box>
+
+          {/* Sağ taraftaki kullanıcı menüsü */}
+          <Box sx={{ display: 'flex', gap: 2 }}>
+            {currentUser ? (
+              <>
+                <Button 
+                  component={Link} 
+                  to="/favoriler"
+                  sx={buttonStyle}
+                >
+                  Favoriler
+                </Button>
+                <Button 
+                  component={Link} 
+                  to="/gecmis"
+                  sx={buttonStyle}
+                >
+                  Dinleme Geçmişi
+                </Button>
+                <Button 
+                  onClick={handleLogout}
+                  sx={buttonStyle}
+                >
+                  Çıkış Yap
+                </Button>
+              </>
+            ) : (
+              <Button 
+                component={Link} 
+                to="/giris"
+                sx={buttonStyle}
+              >
+                GİRİŞ YAP
+              </Button>
+            )}
+          </Box>
+        </Box>
+      </Toolbar>
+    </AppBar>
+  );
+};
+
+export default Header;

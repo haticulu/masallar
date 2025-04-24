@@ -1,0 +1,79 @@
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+  }
+  
+  .star, .moon {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: float 8s linear infinite;
+  }
+  
+  .star::before {
+    content: '⭐';
+    font-size: 16px;
+    color: #FFD700;
+    filter: drop-shadow(0 0 8px #FFD700) 
+           drop-shadow(0 0 15px #FFD700) 
+           brightness(1.3);
+  }
+  
+  .moon::before {
+    content: '🌛';
+    font-size: 16px;
+    filter: drop-shadow(0 0 8px #FFF) 
+           drop-shadow(0 0 15px #FFD700) 
+           brightness(1.2);
+  }
+  
+  @keyframes float {
+    0% {
+      transform: translateY(100vh) rotate(0deg);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100vh) rotate(360deg);
+      opacity: 0;
+    }
+  }
+  
+  /* Yıldızların pozisyonları */
+  .star:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 10s; }
+  .star:nth-child(2) { left: 15%; animation-delay: 1.5s; animation-duration: 9s; }
+  .star:nth-child(3) { left: 25%; animation-delay: 3s; animation-duration: 11s; }
+  .star:nth-child(4) { left: 35%; animation-delay: 4.5s; animation-duration: 8s; }
+  .star:nth-child(5) { left: 45%; animation-delay: 6s; animation-duration: 12s; }
+  .star:nth-child(6) { left: 55%; animation-delay: 7.5s; animation-duration: 9s; }
+  .star:nth-child(7) { left: 65%; animation-delay: 9s; animation-duration: 10s; }
+  .star:nth-child(8) { left: 75%; animation-delay: 10.5s; animation-duration: 11s; }
+  .star:nth-child(9) { left: 85%; animation-delay: 12s; animation-duration: 9s; }
+  .star:nth-child(10) { left: 95%; animation-delay: 13.5s; animation-duration: 10s; }
+  
+  /* Ay dedelerin pozisyonları - ekranın farklı noktalarından */
+  .moon:nth-child(11) { left: 10%; animation-delay: 2s; animation-duration: 12s; }
+  .moon:nth-child(12) { left: 40%; animation-delay: 5s; animation-duration: 11s; }
+  .moon:nth-child(13) { left: 70%; animation-delay: 8s; animation-duration: 13s; }
+  .moon:nth-child(14) { left: 90%; animation-delay: 11s; animation-duration: 10s; }
+  .moon:nth-child(15) { left: 30%; animation-delay: 14s; animation-duration: 12s; }
+  .moon:nth-child(6) { left: 55%; animation-delay: 7.5s; animation-duration: 9s; }
+  .moon:nth-child(7) { left: 65%; animation-delay: 9s; animation-duration: 10s; }
+  .moon:nth-child(8) { left: 75%; animation-delay: 10.5s; animation-duration: 11s; }
+  .moon:nth-child(9) { left: 85%; animation-delay: 12s; animation-duration: 9s; }
+  .moon:nth-child(10) { left: 95%; animation-delay: 13.5s; animation-duration: 10s; }
