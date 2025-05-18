@@ -1,10 +1,22 @@
 import React, { createContext, useContext, useState } from 'react';
 import axios from 'axios';
+import Snackbar from '@mui/material/Snackbar';
+import MuiAlert from '@mui/material/Alert';
 
 const AuthContext = createContext();
 
 export function useAuth() {
   return useContext(AuthContext);
+}
+
+function AlertSnackbar({ open, message, severity, onClose }) {
+  return (
+    <Snackbar open={open} autoHideDuration={4000} onClose={onClose} anchorOrigin={{ vertical: 'top', horizontal: 'center' }}>
+      <MuiAlert onClose={onClose} severity={severity} sx={{ width: '100%' }}>
+        {message}
+      </MuiAlert>
+    </Snackbar>
+  );
 }
 
 export function AuthProvider({ children }) {
@@ -13,23 +25,31 @@ export function AuthProvider({ children }) {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
+  // Alert state and helpers
+  const [alert, setAlert] = useState({ open: false, message: '', severity: 'info' });
+  const showAlert = (message, severity = 'info') => {
+    setAlert({ open: true, message, severity });
+  };
+  const handleAlertClose = () => {
+    setAlert({ ...alert, open: false });
+  };
+
   const register = async (email, password) => {
     try {
         const response = await axios.post('http://localhost:8081/api/users/register', {
             email,
             password
         });
-        alert('Kayıt başarılı!'); // Basit alert mesajı
+        showAlert('Kayıt başarılı!', 'success');
         return true;
       } catch (error) {
         if (error.response?.status === 401) {
-          alert('Giriş başarısız: Email veya şifre yanlış!');
+          showAlert('Giriş başarısız: Email veya şifre yanlış!', 'error');
         } else if (error.response?.status === 400) {
-          alert('Bu email adresi ile kayıtlı kullanıcı bulunmaktadır!');
+          showAlert('Bu email adresi ile kayıtlı kullanıcı bulunmaktadır!', 'warning');
         } else {
-          alert('Bir hata oluştu. Lütfen tekrar deneyiniz.');
+          showAlert('Bir hata oluştu. Lütfen tekrar deneyiniz.', 'error');
         }
-
     }
 };
 
@@ -47,9 +67,9 @@ const login = async (email, password) => {
         }
       } catch (error) {
         if (error.response?.status === 401) {
-          alert('Giriş başarısız: Email veya şifre yanlış!');
+          showAlert('Giriş başarısız: Email veya şifre yanlış!', 'error');
         } else {
-          alert('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyiniz.');
+          showAlert('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyiniz.', 'error');
         }
        
     }
@@ -70,6 +90,7 @@ const login = async (email, password) => {
   return (
     <AuthContext.Provider value={value}>
       {children}
+      <AlertSnackbar open={alert.open} message={alert.message} severity={alert.severity} onClose={handleAlertClose} />
     </AuthContext.Provider>
   );
 }

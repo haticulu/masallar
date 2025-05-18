@@ -15,7 +15,7 @@ import FullscreenIcon from '@mui/icons-material/Fullscreen';
 import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import CloseIcon from '@mui/icons-material/Close';
 
-// Kategoriler
+
 const kategoriler = [
   'Klasik Çocuk Masalları',
   'Eğitici Masallar',
@@ -24,7 +24,7 @@ const kategoriler = [
   'Fantastik Masallar'
 ];
 
-// Masallar verisi
+
 const masallar = [
   {
     id: 1,
@@ -58,13 +58,27 @@ const masallar = [
 },
 {
   id: 3,
+  baslik: "Pinokyo",
+  resimler: [
+    "/images/masallar/pinokyo-1.jpg",
+    "/images/masallar/pinokyo-2.jpg",
+    "/images/masallar/pinokyo-3.jpg",
+    "/images/masallar/pinokyo-4.jpg",
+    "/images/masallar/pinokyo-5.jpg"
+  ],
+  sure: "7 dakika",
+  audioUrl: "/audio/pinokyo.mp3",
+  kategori: "Klasik Çocuk Masalları",
+  textUrl: "/texts/pinokyo.txt"
+},
+{
+  id: 4,
   baslik: "Uyuyan Güzel",
   resimler: [
-    "/images/masallar/uyuyan-guzel-1.jpg",
-    "/images/masallar/uyuyan-guzel-2.jpg",
+    "/images/masallar/uyuyan-guzel-1.JPG",
+    "/images/masallar/uyuyan-guzel-2.JPG",
     "/images/masallar/uyuyan-guzel-3.jpg",
-    "/images/masallar/uyuyan-guzel-4.jpg",
-    "/images/masallar/uyuyan-guzel-5.jpg"
+    "/images/masallar/uyuyan-guzel-4.JPG"
   ],
   sure: "7 dakika",
   audioUrl: "/audio/uyuyan-guzel.mp3",
@@ -72,14 +86,20 @@ const masallar = [
   textUrl: "/texts/uyuyan-guzel.txt"
 },
 {
-  id: 4,
+  id: 5,
   baslik: "Pijamalı Korsanlar",
   resimler: [
     "/images/masallar/pijamali-korsanlar-1.jpg",
     "/images/masallar/pijamali-korsanlar-2.jpg",
     "/images/masallar/pijamali-korsanlar-3.jpg",
     "/images/masallar/pijamali-korsanlar-4.jpg",
-    "/images/masallar/pijamali-korsanlar-5.jpg"
+    "/images/masallar/pijamali-korsanlar-5.jpg",
+    "/images/masallar/pijamali-korsanlar-6.jpg",
+    "/images/masallar/pijamali-korsanlar-7.jpg",
+    "/images/masallar/pijamali-korsanlar-8.jpg",
+    "/images/masallar/pijamali-korsanlar-9.jpg",
+    "/images/masallar/pijamali-korsanlar-10.jpg",
+    "/images/masallar/pijamali-korsanlar-11.jpg",
   ],
   sure: "6 dakika",
   audioUrl: "/audio/pijamali-korsanlar.mp3",
@@ -87,8 +107,92 @@ const masallar = [
   textUrl: "/texts/pijamali-korsanlar.txt"
 },
 {
-  id: 5,
-  baslik: "Keloğlan Masalları",
+  id: 6,
+  baslik: "Sevimli Panda",
+  resimler: [
+    "/images/masallar/panda (1).jpg",
+    "/images/masallar/panda (2).jpg",
+    "/images/masallar/panda (3).jpg",
+    "/images/masallar/panda (4).jpg",
+    "/images/masallar/panda (5).jpg"
+  ],
+  sure: "8 dakika",
+  audioUrl: "/audio/panda.mp3",
+  kategori: "Hayvan Masalları",
+  textUrl: "/texts/panda.txt"
+},
+{
+  id: 7,
+  baslik: "Keloğlan-Su Kanalı",
+  resimler: [
+    "/images/masallar/sukanali1.jpg",
+    "/images/masallar/sukanali2.jpg",
+    "/images/masallar/sukanali3.jpg",
+    "/images/masallar/sukanali4.jpg",
+    "/images/masallar/sukanali5.jpg"
+  ],
+  sure: "8 dakika",
+  audioUrl: "/audio/sukanali.mp3",
+  kategori: "Keloğlan Masalları",
+  textUrl: "/texts/sukanali.txt"
+},
+{
+  id: 8,
+  baslik: "Keloğlan ile Yaver",
+  resimler: [
+    "/images/masallar/yaver-1.jpg",
+    "/images/masallar/yaver-2.jpg",
+    "/images/masallar/yaver-3.jpg",
+    "/images/masallar/yaver-4.jpg",
+    "/images/masallar/yaver-5.jpg"
+  ],
+  sure: "6 dakika",
+  audioUrl: "/audio/yaver.mp3",
+  kategori: "Keloğlan Masalları",
+  textUrl: "/texts/yaver.txt"
+},
+
+{
+  id: 9,
+  baslik: "Zeynep ve Altın Balık",
+  resimler: [
+    "/images/masallar/zeynep1.jpg",
+    "/images/masallar/zeynep2.jpg",
+    "/images/masallar/zeynep3.jpg",
+    "/images/masallar/zeynep4.jpg",
+    "/images/masallar/zeynep5.jpg",
+    "/images/masallar/zeynep6.jpg",
+    "/images/masallar/zeynep7.jpg",
+    "/images/masallar/zeynep8.jpg",
+    "/images/masallar/zeynep9.jpg",
+  ],
+  sure: "6 dakika",
+  audioUrl: "/audio/zeynep.mp3",
+  kategori: "Fantastik Masallar",
+  textUrl: "/texts/zeynep.txt"
+},
+{
+  id: 10,
+  baslik: "Fener",
+  resimler: [
+    "/images/masallar/fener1.jpg",
+    "/images/masallar/fener2.jpg",
+    "/images/masallar/fener3.jpg",
+    "/images/masallar/fener4.jpg",
+    "/images/masallar/fener5.jpg",
+    "/images/masallar/fener6.jpg",
+    "/images/masallar/fener7.jpg",
+    "/images/masallar/fener8.jpg",
+    "/images/masallar/fener9.jpg",
+  ],
+  sure: "5 dakika",
+  audioUrl: "/audio/fener.mp3",
+  kategori: "Fantastik Masallar",
+  textUrl: "/texts/fener.txt"
+},
+{
+  id: 11,
+  baslik: "Keleş Oğlan",
   resimler: [
     "/images/masallar/kel-1.jpg",
     "/images/masallar/kel-2.jpg",
@@ -97,17 +201,48 @@ const masallar = [
     "/images/masallar/kel-5.jpg"
   ],
   sure: "6 dakika",
-  audioUrl: "/audio/keloglan.mp3",
+  audioUrl: "/audio/kel.mp3",
   kategori: "Keloğlan Masalları",
-  textUrl: "/texts/keloglan.txt"
+  textUrl: "/texts/kel.txt"
+},
+
+{
+  id: 12,
+  baslik: "Hansel ile Gretel",
+  resimler: [
+    "/images/masallar/hansel1.jpg",
+    "/images/masallar/hansel2.jpg",
+    "/images/masallar/hansel3.jpg",
+    "/images/masallar/hansel4.jpg",
+    "/images/masallar/hansel5.jpg"
+  ],
+  sure: "6 dakika",
+  audioUrl: "/audio/hansel.mp3",
+  kategori: "Klasik Çocuk Masalları",
+  textUrl: "/texts/hansel.txt"
+},
+{
+  id: 13,
+  baslik: "Tavşan ile Kirpi",
+  resimler: [
+    "/images/masallar/tavsan1.jpg",
+    "/images/masallar/tavsan2.jpg",
+    "/images/masallar/tavsan3.jpg",
+  
+  ],
+  sure: "6 dakika",
+  audioUrl: "/audio/tavsan.mp3",
+  kategori: "Eğitici Masallar",
+  textUrl: "/texts/tavsan.txt"
 }
+
 
 
 
 ];
 const MasalList = ({ type = 'dinle',darkMode }) => {
 
-  // State tanımlamaları
+  
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
@@ -119,17 +254,14 @@ const MasalList = ({ type = 'dinle',darkMode }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
 
-  // Local Storage state'leri
-  const [favoriler, setFavoriler] = useState([]);
-  const [listenHistory, setListenHistory] = useState(() => {
-    const savedHistory = localStorage.getItem(`history_${currentUser?.id}`);
-    return savedHistory ? JSON.parse(savedHistory) : [];
-  });
 
-    // Favorileri yükle ve kontrol et
+  const [favoriler, setFavoriler] = useState([]);
+  const [listenHistory, setListenHistory] = useState([]);
+
+    
 useEffect(() => {
   if (currentUser) {
-    // Yeni kullanıcı için boş favori listesi oluştur
+    
     const userFavorites = localStorage.getItem(`favoriler_${currentUser.id}`);
     if (!userFavorites) {
       localStorage.setItem(`favoriler_${currentUser.id}`, JSON.stringify([]));
@@ -140,10 +272,9 @@ useEffect(() => {
   }
 }, [currentUser]);
 
-// Dinleme geçmişi için
 useEffect(() => {
   if (currentUser) {
-    // Yeni kullanıcı için boş geçmiş listesi oluştur
+   
     const savedHistory = localStorage.getItem(`history_${currentUser.id}`);
     if (!savedHistory) {
       localStorage.setItem(`history_${currentUser.id}`, JSON.stringify([]));
@@ -154,7 +285,7 @@ useEffect(() => {
   }
 }, [currentUser]);
 
-  // Resim geçişi için useEffect
+
   useEffect(() => {
     let timer;
     if (openDialog && selectedMasal) {
@@ -165,7 +296,7 @@ useEffect(() => {
     return () => clearInterval(timer);
   }, [openDialog, selectedMasal]);
 
-   // Event Handlers
+   
    const handleFavori = (masalId, event) => {
     event.stopPropagation();
     if (!currentUser) {
@@ -216,7 +347,7 @@ useEffect(() => {
       const text = await response.text();
       setMasalMetni(text);
       if (currentUser) {
-        addToHistory(masal, 'oku');
+        addToHistory(masal);
       }
     }
   };
@@ -247,19 +378,30 @@ useEffect(() => {
     return matchesSearch && matchesCategory;
   });
 
-  // Ana sayfa için resim yolu düzeltmesi
+
   
   return (
-    <Container sx={{ py: 4, paddingTop: '20px',
-    backgroundColor: darkMode ? 'rgb(14, 9, 73)' : 'rgb(241, 239, 100)', // Yumuşak turuncu-krem tonu
-      minHeight: '100vh'
-     }}>
+    <Container
+    maxWidth={false}
+    disableGutters
+    sx={{
+      py: 4,
+      paddingTop: '20px',
+      backgroundColor: darkMode ? 'rgb(11, 40, 94)' : 'rgb(238, 228, 89)',
+      minHeight: '100vh',
+      width: '100vw',
+      boxSizing: 'border-box',
+      paddingLeft: 0,
+      paddingRight: 0,
+      margin: 0,
+    }}
+  >
     <Typography 
       variant="h4" 
       align="center" 
       sx={{ 
         mb: 4, 
-        color: 'coral',
+        color: darkMode ? 'rgba(199, 172, 19, 0.99)' : 'rgba(231, 84, 39, 0.93)', 
         fontFamily: 'Comic Sans MS',
         textShadow: '2px 2px 4px rgba(0,0,0,0.2)'
       }}
@@ -269,58 +411,97 @@ useEffect(() => {
    </Typography>
    <Box sx={{ 
   display: 'flex', 
-  gap: 2, 
+  gap: 4, 
   mb: 4,
-  justifyContent: 'space-between',
+  justifyContent: 'space-between', 
   alignItems: 'center',
-  width: '100%'
+  width: '100%',
+  px: { xs: 2, md: 6 } 
 }}>
+  
   {/* Kategori Seçimi */}
-  <FormControl sx={{ 
-    width: '150px',
+  <FormControl
+  sx={{
+    minwidth: '200px',
+    width: 'auto',
     '& .MuiInputBase-root': {
       borderRadius: '20px',
       height: '40px',
-      backgroundColor: '#fff',
+      backgroundColor: '#e6d98a', 
       boxShadow: '0 2px 4px rgba(0,0,0,0.1)',
       '&:hover': {
         boxShadow: '0 4px 6px rgba(0,0,0,0.15)'
       }
     },
     '& .MuiSelect-select': {
-      fontSize: '14px',
-      color: '#666',
-      textAlign: 'center',
+      fontSize: '15px',
+      color: '#444', 
+      fontWeight: 700,
       fontFamily: 'Comic Sans MS',
+      letterSpacing: '0.5px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center',
+      minHeight: '40px'
     },
-    '& .MuiInputLabel-root': {
-      fontSize: '14px',
-      color: '#888',
-      fontFamily: 'Comic Sans MS'
+    '& .MuiSelect-icon': {
+      color: '#444', 
+      top: '50%',
+      transform: 'translateY(-50%)'
     },
     '& .MuiOutlinedInput-notchedOutline': {
       borderColor: 'gray'
     }
-  }}>
-    <InputLabel>Kategori </InputLabel>
+  }}
+>
     <Select
       value={kategori}
-      label="Kategori"
+    displayEmpty
       onChange={(e) => setKategori(e.target.value)}
+    inputProps={{ 'aria-label': 'Kategori' }}
+    sx={{ minWidth: '200px', 
+      width: 'auto',
+      textAlign: 'center',
+      pl: 0, 
+      whiteSpace: 'nowrap', 
+    }}
+    renderValue={
+      kategori !== '' ? undefined : () => (
+        <span style={{
+          color: '#444',
+          fontWeight: 700,
+          fontFamily: 'Comic Sans MS',
+          width: '100%',
+          display: 'flex',
+          justifyContent: 'center'
+        }}>
+          Kategori
+        </span>
+      )
+    }
     >
       <MenuItem value="" sx={{ 
-        fontSize: '14px',
-        fontFamily: 'Comic Sans MS'
-      }}>
-        Tümü
+      fontSize: '18px',
+      fontFamily: 'Comic Sans MS',
+      color: '#444',
+      fontWeight: 700,
+      justifyContent: 'center',
+      textAlign: 'center'
+    }}>
+      Kategori
       </MenuItem>
       {kategoriler.map(kat => (
         <MenuItem 
           key={kat} 
           value={kat}
           sx={{ 
-            fontSize: '14px',
+          fontSize: '18px',
             fontFamily: 'Comic Sans MS',
+          color: '#444',
+          fontWeight: 700,
+          justifyContent: 'center',
+          textAlign: 'center'
           }}
         >
           {kat}
@@ -334,15 +515,23 @@ useEffect(() => {
     placeholder="Masal Ara..."
     value={searchTerm}
     onChange={(e) => setSearchTerm(e.target.value)}
+    autoComplete="off" 
     InputProps={{
-      startAdornment: <SearchIcon sx={{ color: '#888', mr: 1, fontSize: '20px' }} />,
+      startAdornment: <SearchIcon sx={{ color: 'rgba(17, 17, 17, 0.94)', mr: 1, fontSize: '20px' }} />,
     }}
     sx={{ 
-      width: '150px',
+      width: '200px',
+      '& .MuiInputBase-input::placeholder': {
+        color: '#444', 
+        opacity: 1,
+        fontWeight: 600,
+        letterSpacing: '0.5px',
+        textAlign: 'center' 
+      },
       '& .MuiInputBase-root': {
         borderRadius: '20px',
         height: '40px',
-        backgroundColor: '#fff',
+        backgroundColor: 'rgba(236, 230, 139, 0.94)',
         boxShadow: '0 3px 4px rgba(0, 0, 0, 0.1)',
         '&:hover': {
           boxShadow: '0 4px 6px rgba(0,0,0,0.15)'
@@ -364,14 +553,14 @@ useEffect(() => {
     }}
   />
 </Box>
-      <Grid container spacing={4}>
+<Grid container spacing={10} sx={{ px: { xs: 2, md: 6 } }}>
         {filteredMasallar.map((masal) => (
           <Grid item key={masal.id} xs={12} sm={6} md={4}>
             <Card 
               sx={{ 
                 height: '100%',
                 display: 'flex',
-                backgroundColor: darkMode ? 'rgb(250, 250, 250)' : 'rgba(245, 232, 176, 0.93)', 
+                backgroundColor: darkMode ? 'rgba(245, 232, 176, 0.93)' : 'rgba(245, 232, 176, 0.93)', 
                 flexDirection: 'column',
                 borderRadius: '15px',
                 boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
@@ -503,9 +692,9 @@ useEffect(() => {
         <IconButton 
     onClick={toggleFullScreen}
     sx={{
-      color: '#666', // Sabit gri renk
+      color: '#666', 
       '&:hover': {
-        color: '#333' // Hover durumunda koyu gri
+        color: '#333' 
       }
     }}
   >
@@ -513,9 +702,9 @@ useEffect(() => {
           </IconButton>
           <IconButton onClick={handleDialogClose}
            sx={{
-            color: '#666', // Sabit gri renk
+            color: '#666', 
             '&:hover': {
-              color: '#333' // Hover durumunda koyu gri
+              color: '#333' 
             }
           }}>
             <CloseIcon />
@@ -581,7 +770,7 @@ useEffect(() => {
                       style={{ width: '100%' }}
                       src={selectedMasal.audioUrl}
                     >
-                      Tarayıcınız audio elementini desteklemiyor.
+                
                     </audio>
                   </Box>
                 </Box>

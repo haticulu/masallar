@@ -23,10 +23,10 @@ const Header = ({ darkMode, setDarkMode }) => {
 
   // Ortak buton stili
   const buttonStyle = {
-    color: darkMode ? 'white' : 'white', // Sıcak kahverengi
-    border: `1px solid ${darkMode ? 'white' : 'white'}`,
+    color: darkMode ? 'rgba(230, 198, 57, 0.86)' : 'white',
+    border: `1px solid ${darkMode ? 'rgba(230, 198, 57, 0.86)' : 'white'}`,
     '&:hover': {
-      color: darkMode ? '#ff7f50' : '#FFB6C1', // Mercan rengi
+      color: darkMode ? '#ff7f50' : '#FFB6C1',
       backgroundColor: darkMode 
         ? 'rgba(255,127,80,0.1)'
         : 'rgba(255,255,255,0.1)'
@@ -42,7 +42,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     // Header.js
 <AppBar position="static" sx={{ 
   background: darkMode 
-    ? 'linear-gradient(90deg,rgba(10, 33, 110, 0.8),rgb(125, 139, 219),rgb(107, 190, 238))' // Sıcak pembe-turuncu-sarı gradient
+    ? 'linear-gradient(90deg,rgba(1, 6, 26, 0.93),rgb(3, 6, 22),rgb(3, 33, 51))' // Sıcak pembe-turuncu-sarı gradient
     : 'linear-gradient(90deg, #FF0000,rgba(255, 166, 0, 0.92), #FFFF00, #8B00FF, #00FF00, #0000FF, #4B0082)',
   boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
 }}>
@@ -64,7 +64,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     variant="h3" 
     sx={{ 
       fontFamily: 'Brush Script MT, cursive',
-      color: darkMode ? '#fff' : '#FFA500', // Sıcak somon rengi
+      color: darkMode ? 'rgba(209, 198, 47, 0.86)' : '#FFA500', // Sıcak somon rengi
       textShadow: darkMode 
         ? '2px 2px 4px rgba(0, 0, 0, 0.2)'
         : '2px 2px 4px rgba(0,0,0,0.2)',

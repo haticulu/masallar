@@ -45,7 +45,8 @@ const Login = () => {
         p: 3,
         borderRadius: 2,
         boxShadow: 3,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        border: '2px solid #b8860b'
       }}>
         <Typography variant="h4" sx={{ mb: 3, fontFamily: 'Comic Sans MS', color: 'coral' }}>
           {tab === 0 ? 'Giriş Yap' : 'Kayıt Ol'}
@@ -65,7 +66,22 @@ const Login = () => {
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            sx={{ mb: 2 }}
+            sx={{
+              mb: 2,
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: '#b8860b',
+                  borderWidth: 2,
+                },
+                '&:hover fieldset': {
+                  borderColor: '#ff9800',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff6b4a',
+                  borderWidth: 2,
+                },
+              },
+            }}
           />
           <TextField
             margin="normal"
@@ -75,7 +91,22 @@ const Login = () => {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            sx={{ mb: 3 }}
+            sx={{
+              mb: 3,
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: '#b8860b',
+                  borderWidth: 2,
+                },
+                '&:hover fieldset': {
+                  borderColor: '#ff9800',
+                },
+                '&.Mui-focused fieldset': {
+                  borderColor: '#ff6b4a',
+                  borderWidth: 2,
+                },
+              },
+            }}
           />
           <Button
             type="submit"
