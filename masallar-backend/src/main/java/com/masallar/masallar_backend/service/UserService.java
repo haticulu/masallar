@@ -6,5 +6,5 @@ public interface UserService {
     User saveUser(User user);
     User findByEmailAndPassword(String email, String password);
     boolean existsByEmail(String email);
-    boolean existsByUsername(String username);
+   
 }

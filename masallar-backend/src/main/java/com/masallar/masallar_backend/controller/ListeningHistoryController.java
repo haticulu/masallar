@@ -17,7 +17,8 @@ public class ListeningHistoryController {
     public ListeningHistory addHistory(@RequestBody ListeningHistory history) {
         return listeningHistoryService.addHistory(history);
     }
-
+    
+  
     @GetMapping("/user/{userId}")
     public List<ListeningHistory> getUserHistory(@PathVariable Integer userId) {
         return listeningHistoryService.getHistoryByUserId(userId);

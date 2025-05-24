@@ -8,4 +8,5 @@ import java.util.List;
 @Repository
 public interface ListeningHistoryRepository extends JpaRepository<ListeningHistory, Integer> {
     List<ListeningHistory> findByUserId(Integer userId);
+  
 }

@@ -17,6 +17,11 @@ public class FavoriteController {
     public Favorite addFavorite(@RequestBody Favorite favorite) {
         return favoriteService.addFavorite(favorite);
     }
+    
+    @DeleteMapping("/{userId}/{taleId}")
+    public void removeFavorite(@PathVariable Integer userId, @PathVariable Integer taleId) {
+        favoriteService.removeFavorite(userId, taleId);
+    }
 
     @GetMapping("/user/{userId}")
     public List<Favorite> getFavoritesByUserId(@PathVariable Integer userId) {

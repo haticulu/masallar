@@ -19,8 +19,7 @@ public class ListeningHistory {
     @Column(name = "tale_id")
     private Integer taleId;
     
-    private Integer durationListened;
-    private String aktiviteTipi;
+  
     
     private LocalDateTime listenedAt = LocalDateTime.now();
 }

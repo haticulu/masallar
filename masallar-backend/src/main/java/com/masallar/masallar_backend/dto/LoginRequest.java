@@ -4,7 +4,7 @@ public class LoginRequest {
     private String email;
     private String password;
 
-    // Getter ve Setter metodları
+   
     public String getEmail() {
         return email;
     }

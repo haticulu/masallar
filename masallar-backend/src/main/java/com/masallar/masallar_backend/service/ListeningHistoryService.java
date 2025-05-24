@@ -6,4 +6,5 @@ import java.util.List;
 public interface ListeningHistoryService {
     ListeningHistory addHistory(ListeningHistory history);
     List<ListeningHistory> getHistoryByUserId(Integer userId);
+   
 }

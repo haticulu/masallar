@@ -43,11 +43,6 @@ public class UserServiceImpl implements UserService {
         return userRepository.existsByEmail(email);
     }
 
-	@Override
-	public boolean existsByUsername(String username) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
     
 }

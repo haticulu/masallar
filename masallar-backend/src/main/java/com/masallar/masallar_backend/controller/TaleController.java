@@ -9,7 +9,6 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/tales")
-//@CrossOrigin(origins = "http://localhost:3000")
 public class TaleController {
 
     @Autowired
@@ -25,8 +24,5 @@ public class TaleController {
         return taleService.getTaleImages(taleId);
     }
 
-    @PostMapping
-    public Tale createTale(@RequestBody Tale tale) {
-        return taleService.saveTale(tale);
-    }
+	
 }

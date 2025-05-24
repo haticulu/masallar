@@ -12,7 +12,6 @@ public class ListeningHistoryServiceImpl implements ListeningHistoryService {
 
     private final ListeningHistoryRepository listeningHistoryRepository;
 
-    @Autowired
     public ListeningHistoryServiceImpl(ListeningHistoryRepository listeningHistoryRepository) {
         this.listeningHistoryRepository = listeningHistoryRepository;
     }
@@ -21,6 +20,8 @@ public class ListeningHistoryServiceImpl implements ListeningHistoryService {
     public ListeningHistory addHistory(ListeningHistory history) {
         return listeningHistoryRepository.save(history);
     }
+    
+   
 
     @Override
     public List<ListeningHistory> getHistoryByUserId(Integer userId) {

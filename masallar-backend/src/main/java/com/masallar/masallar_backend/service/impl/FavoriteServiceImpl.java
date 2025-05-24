@@ -21,6 +21,11 @@ public class FavoriteServiceImpl implements FavoriteService {
     public Favorite addFavorite(Favorite favorite) {
         return favoriteRepository.save(favorite);
     }
+    
+    @Override
+    public void removeFavorite(Integer userId, Integer taleId) {
+        favoriteRepository.deleteByUserIdAndTaleId(userId, taleId);
+    }
 
     @Override
     public List<Favorite> getFavoritesByUserId(Integer userId) {
