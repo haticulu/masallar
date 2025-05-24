@@ -16,6 +16,7 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import CloseIcon from '@mui/icons-material/Close';
 
 
+
 const kategoriler = [
   'Klasik Çocuk Masalları',
   'Eğitici Masallar',
@@ -97,9 +98,7 @@ const masallar = [
     "/images/masallar/pijamali-korsanlar-6.jpg",
     "/images/masallar/pijamali-korsanlar-7.jpg",
     "/images/masallar/pijamali-korsanlar-8.jpg",
-    "/images/masallar/pijamali-korsanlar-9.jpg",
-    "/images/masallar/pijamali-korsanlar-10.jpg",
-    "/images/masallar/pijamali-korsanlar-11.jpg",
+    "/images/masallar/pijamali-korsanlar-9.jpg"
   ],
   sure: "6 dakika",
   audioUrl: "/audio/pijamali-korsanlar.mp3",
@@ -236,13 +235,11 @@ const masallar = [
   textUrl: "/texts/tavsan.txt"
 }
 
-
-
-
 ];
-const MasalList = ({ type = 'dinle',darkMode }) => {
 
-  
+
+
+const MasalList = ({ type = 'dinle',darkMode }) => {
   const navigate = useNavigate();
   const { currentUser } = useAuth();
   const [openDialog, setOpenDialog] = useState(false);
@@ -253,20 +250,28 @@ const MasalList = ({ type = 'dinle',darkMode }) => {
   const [dialogImageIndex, setDialogImageIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isFullScreen, setIsFullScreen] = useState(false);
-
-
   const [favoriler, setFavoriler] = useState([]);
   const [listenHistory, setListenHistory] = useState([]);
 
+ 
+  const fetchFavoriler = () => {
+    if (!currentUser) return;
+    fetch(`http://localhost:8081/api/favorites/user/${currentUser.id}`)
+      .then(res => res.json())
+      .then(data => {
+        const favoriIdListesi = data.map(fav => fav.taleId);
+        setFavoriler(favoriIdListesi);
+        localStorage.setItem(`favoriler_${currentUser.id}`, JSON.stringify(favoriIdListesi));
+      })
+      .catch(err => {
+        setFavoriler([]);
+        localStorage.setItem(`favoriler_${currentUser.id}`, JSON.stringify([]));
+      });
+  };
     
 useEffect(() => {
   if (currentUser) {
-    
-    const userFavorites = localStorage.getItem(`favoriler_${currentUser.id}`);
-    if (!userFavorites) {
-      localStorage.setItem(`favoriler_${currentUser.id}`, JSON.stringify([]));
-    }
-    setFavoriler(userFavorites ? JSON.parse(userFavorites) : []);
+      fetchFavoriler();
   } else {
     setFavoriler([]);
   }
@@ -274,7 +279,6 @@ useEffect(() => {
 
 useEffect(() => {
   if (currentUser) {
-   
     const savedHistory = localStorage.getItem(`history_${currentUser.id}`);
     if (!savedHistory) {
       localStorage.setItem(`history_${currentUser.id}`, JSON.stringify([]));
@@ -284,7 +288,6 @@ useEffect(() => {
     setListenHistory([]);
   }
 }, [currentUser]);
-
 
   useEffect(() => {
     let timer;
@@ -296,24 +299,45 @@ useEffect(() => {
     return () => clearInterval(timer);
   }, [openDialog, selectedMasal]);
 
-   
-   const handleFavori = (masalId, event) => {
+  const handleFavori = async (masalId, event) => {
     event.stopPropagation();
     if (!currentUser) {
       navigate('/giris');
       return;
     }
-    const yeniFavoriler = favoriler.includes(masalId)
-      ? favoriler.filter(id => id !== masalId)
-      : [...favoriler, masalId];
-    
-    setFavoriler(yeniFavoriler);
-    localStorage.setItem(`favoriler_${currentUser.id}`, JSON.stringify(yeniFavoriler));
+    const favoriVarMi = favoriler.includes(masalId);
+    try {
+      if (favoriVarMi) {
+        await fetch(`http://localhost:8081/api/favorites/${currentUser.id}/${masalId}`, {
+          method: 'DELETE'
+        });
+      } else {
+        await fetch('http://localhost:8081/api/favorites', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            userId: currentUser.id,
+            taleId: masalId
+          })
+        });
+      }
+      fetchFavoriler();
+    } catch (err) {
+      alert('Favori ekleme/çıkarma sırasında hata oluştu!');
+    }
   };
 
-  const addToHistory = (masal) => {
+  const addToHistory = async (masal) => {
     if (!currentUser) return;
-
+    await fetch('http://localhost:8081/api/listening-history', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        userId: currentUser.id,
+        taleId: masal.id,
+        tarih: new Date().toISOString()
+      })
+    });
     const newHistory = [
       {
         id: masal.id,
@@ -325,7 +349,6 @@ useEffect(() => {
       },
       ...listenHistory.filter(item => item.id !== masal.id)
     ].slice(0, 10);
-
     setListenHistory(newHistory);
     localStorage.setItem(`history_${currentUser.id}`, JSON.stringify(newHistory));
   };
@@ -336,7 +359,6 @@ useEffect(() => {
     setDialogImageIndex(0);
     setIsPlaying(actionType === 'dinle');
     setIsFullScreen(false);
-    
     if (actionType === 'dinle') {
       setMasalMetni('');
       if (currentUser) {
@@ -378,7 +400,6 @@ useEffect(() => {
     return matchesSearch && matchesCategory;
   });
 
-
   
   return (
     <Container
@@ -419,7 +440,7 @@ useEffect(() => {
   px: { xs: 2, md: 6 } 
 }}>
   
-  {/* Kategori Seçimi */}
+  
   <FormControl
   sx={{
     minwidth: '200px',
@@ -459,7 +480,6 @@ useEffect(() => {
       value={kategori}
     displayEmpty
       onChange={(e) => setKategori(e.target.value)}
-    inputProps={{ 'aria-label': 'Kategori' }}
     sx={{ minWidth: '200px', 
       width: 'auto',
       textAlign: 'center',
@@ -510,7 +530,7 @@ useEffect(() => {
     </Select>
   </FormControl>
 
-  {/* Arama Kutusu */}
+ 
   <TextField
     placeholder="Masal Ara..."
     value={searchTerm}
@@ -618,9 +638,7 @@ useEffect(() => {
                       fontSize: '0.9rem'
                     }}
                   >
-                    Son dinleme: {
-                      new Date(listenHistory.find(h => h.id === masal.id)?.tarih).toLocaleDateString('tr-TR')
-                    }
+                    Dinlenme zamanı: {new Date(listenHistory.find(h => h.id === masal.id)?.tarih).toLocaleDateString('tr-TR')}
                   </Typography>
                 )}
                 

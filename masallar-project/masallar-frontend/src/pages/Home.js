@@ -1,46 +1,16 @@
 import React, { useState } from 'react';
 import { Container, Typography, Box, IconButton } from '@mui/material';
-/* import VolumeUpIcon from '@mui/icons-material/VolumeUp';
-import VolumeOffIcon from '@mui/icons-material/VolumeOff'; */
 
 const Home = () => {
-  /* const [isMusicPlaying, setIsMusicPlaying] = useState(true);
-
-  const toggleMusic = () => {
-    setIsMusicPlaying(!isMusicPlaying);
-    const audio = document.getElementById('background-music');
-    if (audio) {
-      if (isMusicPlaying) {
-        audio.pause();
-      } else {
-        audio.play();
-      }
-    }
-  }; */
-
   return (
     <Container maxWidth="lg" sx={{ mt: 4 }}>
       <Box sx={{ textAlign: 'center' }}>
-        {/* <IconButton
-          onClick={toggleMusic}
-          sx={{
-            position: 'fixed',
-            top: 20,
-            right: 20,
-            backgroundColor: 'rgba(255, 255, 255, 0.8)',
-            '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.9)',
-            },
-          }}
-        >
-          {isMusicPlaying ? <VolumeUpIcon /> : <VolumeOffIcon />}
-        </IconButton> */}
         <Typography 
           variant="h4" 
           sx={{ 
             color: '#666',
             fontFamily: 'Comic Sans MS',
-            mb: 0
+            mb: 1
           }}
         >
           Masal Dünyasına Hoş Geldiniz!

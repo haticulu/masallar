@@ -11,6 +11,11 @@ import {
 } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
+import InputAdornment from '@mui/material/InputAdornment';
+import IconButton from '@mui/material/IconButton';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [tab, setTab] = useState(0);
@@ -23,17 +28,18 @@ const Login = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (tab === 0) { // Giriş
+    if (tab === 0) { 
         await login(email, password);
         navigate('/anasayfa');
-    } else { // Kayıt
+    } else { 
         await register(email, password);
-        // Başarılı kayıt sonrası giriş tabına geç
+        
         setTab(0);
         setEmail('');
         setPassword('');
     }
 };
+const [showPassword, setShowPassword] = useState(false);
 
   return (
     <Container maxWidth="sm">
@@ -84,30 +90,43 @@ const Login = () => {
             }}
           />
           <TextField
-            margin="normal"
-            required
-            fullWidth
-            label="Şifre"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            sx={{
-              mb: 3,
-              '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: '#b8860b',
-                  borderWidth: 2,
-                },
-                '&:hover fieldset': {
-                  borderColor: '#ff9800',
-                },
-                '&.Mui-focused fieldset': {
-                  borderColor: '#ff6b4a',
-                  borderWidth: 2,
-                },
-              },
-            }}
-          />
+  margin="normal"
+  required
+  fullWidth
+  label="Şifre"
+  type={showPassword ? 'text' : 'password'}
+  value={password}
+  onChange={(e) => setPassword(e.target.value)}
+  sx={{
+    mb: 3,
+    '& .MuiOutlinedInput-root': {
+      '& fieldset': {
+        borderColor: '#b8860b',
+        borderWidth: 2,
+      },
+      '&:hover fieldset': {
+        borderColor: '#ff9800',
+      },
+      '&.Mui-focused fieldset': {
+        borderColor: '#ff6b4a',
+        borderWidth: 2,
+      },
+    },
+  }}
+  InputProps={{
+    endAdornment: (
+      <InputAdornment position="end">
+        <IconButton
+          onClick={() => setShowPassword((show) => !show)}
+          edge="end"
+         
+        >
+          {showPassword ? <VisibilityOff /> : <Visibility />}
+        </IconButton>
+      </InputAdornment>
+    ),
+  }}
+/>
           <Button
             type="submit"
             fullWidth
@@ -118,8 +137,27 @@ const Login = () => {
               fontFamily: 'Comic Sans MS'
             }}
           >
+           
             {tab === 0 ? 'Giriş Yap' : 'Kayıt Ol'}
           </Button>
+          {tab === 0 && (
+  <Box sx={{ display: 'flex', justifyContent: 'flex-end', mt: 1 }}>
+    <Typography
+      component={Link}
+      to="/forgot-password"
+      variant="body2"
+      color="primary"
+      sx={{
+        textDecoration: 'none',
+        fontWeight: 500,
+        cursor: 'pointer',
+        '&:hover': { textDecoration: 'underline' }
+      }}
+    >
+      Şifremi Unuttum
+    </Typography>
+  </Box>
+)}
         </Box>
       </Box>
     </Container>

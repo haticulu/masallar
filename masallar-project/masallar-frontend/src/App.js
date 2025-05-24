@@ -8,6 +8,8 @@ import MasalList from './components/MasalList';
 import { AuthProvider } from './contexts/AuthContext';
 import Login from './pages/Login';
 import StarBackground from './components/StarBackground';
+import ForgotPassword from './components/ForgotPassword';
+
 
 
 function App() {
@@ -20,15 +22,15 @@ function App() {
     palette: {
       mode: darkMode ? 'dark' : 'light',
       primary: {
-        main: darkMode ? '#ff7f50' : '#1976d2', // Mercan rengi
+        main: darkMode ? '#ff7f50' : '#1976d2', 
       },
       background: {
-        default: darkMode ? '#fff5e6' : '#fff',    // Sıcak krem
-        paper: darkMode ? '#ffe0b2' : '#fff',      // Sıcak bej
+        default: darkMode ? '#fff5e6' : '#fff',    
+        paper: darkMode ? '#ffe0b2' : '#fff',      
       },
       text: {
-        primary: darkMode ? '#8b4513' : '#333',    // Sıcak kahverengi
-        secondary: darkMode ? '#cd853f' : '#666',   // Peru kahvesi
+        primary: darkMode ? '#8b4513' : '#333',    
+        secondary: darkMode ? '#cd853f' : '#666',   
       }
     },
     typography: {
@@ -73,7 +75,7 @@ function App() {
     },
   });
 
-  // Gece modunu localStorage'a kaydet
+ 
   React.useEffect(() => {
     localStorage.setItem('darkMode', JSON.stringify(darkMode));
   }, [darkMode]);
@@ -84,14 +86,15 @@ function App() {
       <div className={darkMode ? 'dark-mode' : 'light-mode'}></div>
       <AuthProvider>
         <Router>
-        <StarBackground darkMode={darkMode} />
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} />
+          <StarBackground darkMode={darkMode} />
+          <Header darkMode={darkMode} setDarkMode={setDarkMode} />
           <Routes>
             <Route path="/" element={<Navigate to="/anasayfa" />} />
             <Route path="/anasayfa" element={<Home darkMode={darkMode} />} />
             <Route path="/dinle" element={<MasalList type="dinle" darkMode={darkMode} />} />
             <Route path="/oku" element={<MasalList type="oku" darkMode={darkMode} />} />
             <Route path="/giris" element={<Login darkMode={darkMode} />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/favoriler" element={<MasalList type="favoriler" darkMode={darkMode} />} />
             <Route path="/gecmis" element={<MasalList type="gecmis" darkMode={darkMode} />} />
           </Routes>

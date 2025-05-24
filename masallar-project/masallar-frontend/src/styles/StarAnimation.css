@@ -54,7 +54,7 @@
     }
   }
   
-  /* Yıldızların pozisyonları */
+
   .star:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 10s; }
   .star:nth-child(2) { left: 15%; animation-delay: 1.5s; animation-duration: 9s; }
   .star:nth-child(3) { left: 25%; animation-delay: 3s; animation-duration: 11s; }
@@ -66,7 +66,7 @@
   .star:nth-child(9) { left: 85%; animation-delay: 12s; animation-duration: 9s; }
   .star:nth-child(10) { left: 95%; animation-delay: 13.5s; animation-duration: 10s; }
   
-  /* Ay dedelerin pozisyonları - ekranın farklı noktalarından */
+
   .moon:nth-child(11) { left: 10%; animation-delay: 2s; animation-duration: 12s; }
   .moon:nth-child(12) { left: 40%; animation-delay: 5s; animation-duration: 11s; }
   .moon:nth-child(13) { left: 70%; animation-delay: 8s; animation-duration: 13s; }

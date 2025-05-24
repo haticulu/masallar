@@ -9,8 +9,8 @@ import {
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import DarkModeIcon from '@mui/icons-material/DarkMode'; // Ay ikonu
-import WbSunnyIcon from '@mui/icons-material/WbSunny'; // Güneş ikonu
+import DarkModeIcon from '@mui/icons-material/DarkMode'; 
+import WbSunnyIcon from '@mui/icons-material/WbSunny'; 
 
 const Header = ({ darkMode, setDarkMode }) => {
   const { currentUser, logout } = useAuth();
@@ -21,7 +21,7 @@ const Header = ({ darkMode, setDarkMode }) => {
     navigate('/');
   };
 
-  // Ortak buton stili
+ 
   const buttonStyle = {
     color: darkMode ? 'rgba(230, 198, 57, 0.86)' : 'white',
     border: `1px solid ${darkMode ? 'rgba(230, 198, 57, 0.86)' : 'white'}`,
@@ -39,19 +39,17 @@ const Header = ({ darkMode, setDarkMode }) => {
   };
 
   return (
-    // Header.js
-<AppBar position="static" sx={{ 
-  background: darkMode 
-    ? 'linear-gradient(90deg,rgba(1, 6, 26, 0.93),rgb(3, 6, 22),rgb(3, 33, 51))' // Sıcak pembe-turuncu-sarı gradient
-    : 'linear-gradient(90deg, #FF0000,rgba(255, 166, 0, 0.92), #FFFF00, #8B00FF, #00FF00, #0000FF, #4B0082)',
-  boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
-}}>
+    <AppBar position="static" sx={{ 
+      background: darkMode 
+        ? 'linear-gradient(90deg,rgba(1, 6, 26, 0.93),rgb(3, 6, 22),rgb(3, 33, 51))' // Sıcak pembe-turuncu-sarı gradient
+        : 'linear-gradient(90deg, #FF0000,rgba(255, 166, 0, 0.92), #FFFF00, #8B00FF, #00FF00, #0000FF, #4B0082)',
+      boxShadow: '0 2px 4px rgba(0,0,0,0.1)'
+    }}>
       <Toolbar sx={{ 
         display: 'flex', 
         flexDirection: 'column',
         padding: '10px 0',
       }}>
-        {/* Site Başlığı */}
         <Box sx={{ 
           display: 'flex', 
           width: '100%',
@@ -61,43 +59,39 @@ const Header = ({ darkMode, setDarkMode }) => {
           gap: 2
         }}>
           <Typography 
-    variant="h3" 
-    sx={{ 
-      fontFamily: 'Brush Script MT, cursive',
-      color: darkMode ? 'rgba(209, 198, 47, 0.86)' : '#FFA500', // Sıcak somon rengi
-      textShadow: darkMode 
-        ? '2px 2px 4px rgba(0, 0, 0, 0.2)'
-        : '2px 2px 4px rgba(0,0,0,0.2)',
-      fontSize: '48px'
-    }}
-  >
-    Masal Dünyası
-  </Typography>
+            variant="h3" 
+            sx={{ 
+              fontFamily: 'Brush Script MT, cursive',
+              color: darkMode ? 'rgba(209, 198, 47, 0.86)' : '#FFA500', // Sıcak somon rengi
+              textShadow: darkMode 
+                ? '2px 2px 4px rgba(0, 0, 0, 0.2)'
+                : '2px 2px 4px rgba(0,0,0,0.2)',
+              fontSize: '48px'
+            }}
+          >
+            Masal Dünyası
+          </Typography>
           
-          {/* Gece Modu Butonu */}
           <IconButton 
-  onClick={() => setDarkMode(!darkMode)}
-  sx={{ 
-    color: 'yellow',
-    border: '1px solid white',
-    '&:hover': {
-      backgroundColor: 'rgba(255, 255, 255, 0.86)'
-    }
-  }}
->
-  {darkMode ? <WbSunnyIcon /> : <DarkModeIcon />}
-</IconButton>
-
+            onClick={() => setDarkMode(!darkMode)}
+            sx={{ 
+              color: 'yellow',
+              border: '1px solid white',
+              '&:hover': {
+                backgroundColor: 'rgba(255, 255, 255, 0.86)'
+              }
+            }}
+          >
+            {darkMode ? <WbSunnyIcon /> : <DarkModeIcon />}
+          </IconButton>
         </Box>
 
-        {/* Navigasyon Menüsü */}
         <Box sx={{ 
           display: 'flex', 
           justifyContent: 'space-between',
           width: '100%',
           alignItems: 'center'
         }}>
-          {/* Sol taraftaki ana menü */}
           <Box sx={{ display: 'flex', gap: 2, color:'white' }}>
             {[
               { title: 'Ana Sayfa', path: '/anasayfa' },
@@ -115,7 +109,6 @@ const Header = ({ darkMode, setDarkMode }) => {
             ))}
           </Box>
 
-          {/* Sağ taraftaki kullanıcı menüsü */}
           <Box sx={{ display: 'flex', gap: 2 }}>
             {currentUser ? (
               <>

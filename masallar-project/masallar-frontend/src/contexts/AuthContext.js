@@ -25,7 +25,7 @@ export function AuthProvider({ children }) {
     return savedUser ? JSON.parse(savedUser) : null;
   });
 
-  // Alert state and helpers
+
   const [alert, setAlert] = useState({ open: false, message: '', severity: 'info' });
   const showAlert = (message, severity = 'info') => {
     setAlert({ open: true, message, severity });
