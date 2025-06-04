@@ -17,8 +17,9 @@ public class PasswordResetController {
     public ResponseEntity<?> resetPassword(@RequestBody ResetPasswordRequest request) {
         boolean result = passwordResetService.resetPassword(request.getEmail(), request.getNewPassword());
         if (!result) {
-            return ResponseEntity.badRequest().body("Kullanıcı bulunamadı");
+            return ResponseEntity.badRequest().body("USER_NOT_FOUND");  
         }
-        return ResponseEntity.ok("Şifre başarıyla güncellendi");
+        return ResponseEntity.ok("PASSWORD_RESET_SUCCESS");  
     }
+
 }

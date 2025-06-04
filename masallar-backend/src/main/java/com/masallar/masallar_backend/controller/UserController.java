@@ -18,11 +18,11 @@ public class UserController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         if (userService.existsByEmail(user.getEmail())) {
-            return ResponseEntity.badRequest().body("Bu email adresi zaten kullanımda!");
+            return ResponseEntity.badRequest().body("EMAIL_EXISTS");
         }
 
         User savedUser = userService.saveUser(user);
-        return ResponseEntity.ok("Kayıt başarılı!");
+        return ResponseEntity.ok("REGISTER_SUCCESS");
     }
 
     @PostMapping("/login")
@@ -31,7 +31,7 @@ public class UserController {
         if (user != null) {
             return ResponseEntity.ok(user);
         } else {
-            return ResponseEntity.status(401).body("Email veya şifre yanlış!");
+            return ResponseEntity.status(401).body("LOGIN_FAILED");
         }
     }
 }
