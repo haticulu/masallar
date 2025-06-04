@@ -24,5 +24,4 @@ public class TaleController {
         return taleService.getTaleImages(taleId);
     }
 
-	
 }
