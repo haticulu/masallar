@@ -16,7 +16,6 @@ import FullscreenExitIcon from '@mui/icons-material/FullscreenExit';
 import CloseIcon from '@mui/icons-material/Close';
 
 
-
 const kategoriler = [
   'Klasik Çocuk Masalları',
   'Eğitici Masallar',
@@ -37,7 +36,7 @@ const masallar = [
       "/images/masallar/kirmizi-baslikli-kiz-4.jpg",
       "/images/masallar/kirmizi-baslikli-kiz-5.jpg"
     ],
-    sure: "5 dakika",
+    sure: "8 dakika",
     audioUrl: "/audio/kirmizi-baslikli-kiz.mp3",
     kategori: "Klasik Çocuk Masalları",
     textUrl: "/texts/kirmizi-baslikli-kiz.txt"
@@ -52,7 +51,7 @@ const masallar = [
     "/images/masallar/bremen-mizikacilari-4.jpg",
     "/images/masallar/bremen-mizikacilari-5.jpg"
   ],
-  sure: "6 dakika",
+  sure: "16 dakika",
   audioUrl: "/audio/bremen-mizikacilari.mp3",
   kategori: "Hayvan Masalları",
   textUrl: "/texts/bremen-mizikacilari.txt"
@@ -67,7 +66,7 @@ const masallar = [
     "/images/masallar/pinokyo-4.jpg",
     "/images/masallar/pinokyo-5.jpg"
   ],
-  sure: "7 dakika",
+  sure: "6 dakika",
   audioUrl: "/audio/pinokyo.mp3",
   kategori: "Klasik Çocuk Masalları",
   textUrl: "/texts/pinokyo.txt"
@@ -294,13 +293,14 @@ useEffect(() => {
     if (openDialog && selectedMasal) {
       timer = setInterval(() => {
         setDialogImageIndex((prev) => (prev + 1) % selectedMasal.resimler.length);
-      }, 7000);
+      }, 9000);
     }
     return () => clearInterval(timer);
   }, [openDialog, selectedMasal]);
 
+  
+
   const handleFavori = async (masalId, event) => {
-    event.stopPropagation();
     if (!currentUser) {
       navigate('/giris');
       return;
@@ -362,14 +362,14 @@ useEffect(() => {
     if (actionType === 'dinle') {
       setMasalMetni('');
       if (currentUser) {
-        addToHistory(masal);
+          addToHistory(masal);
       }
     } else if (actionType === 'oku') {
       const response = await fetch(masal.textUrl);
       const text = await response.text();
       setMasalMetni(text);
       if (currentUser) {
-        addToHistory(masal);
+          addToHistory(masal);
       }
     }
   };

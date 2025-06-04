@@ -3,7 +3,7 @@ import { Container, Typography, Box, IconButton } from '@mui/material';
 
 const Home = () => {
   return (
-    <Container maxWidth="lg" sx={{ mt: 4 }}>
+    <Container maxWidth="lg" sx={{ mt: 2 }}>
       <Box sx={{ textAlign: 'center' }}>
         <Typography 
           variant="h4" 

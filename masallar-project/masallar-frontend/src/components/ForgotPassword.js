@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Container, TextField, Button, Typography, Box, Alert } from '@mui/material';
 import axios from 'axios';
+import { useAuth } from '../contexts/AuthContext';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
@@ -9,6 +10,7 @@ const ForgotPassword = () => {
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  const { showAlert } = useAuth(); 
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -17,14 +19,17 @@ const ForgotPassword = () => {
         email: email,
         newPassword: newPassword
       });
-      
-      setMessage('Şifreniz başarıyla güncellendi');
-      setTimeout(() => {
-        navigate('/giris');
-      }, 1000);
-    } catch (error) {
-      setError('Kullanıcı bulunamadı');
+      if (response.data === "PASSWORD_RESET_SUCCESS") {
+        showAlert('Şifreniz başarıyla güncellendi', 'success');
+        setTimeout(() => {
+            navigate('/giris');
+        }, 1000);
     }
+} catch (error) {
+    if (error.response?.data === "USER_NOT_FOUND") {
+        showAlert('Kullanıcı bulunamadı', 'error');
+    } 
+}
   };
 
   return (

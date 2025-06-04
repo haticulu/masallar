@@ -94,7 +94,7 @@ function App() {
             <Route path="/dinle" element={<MasalList type="dinle" darkMode={darkMode} />} />
             <Route path="/oku" element={<MasalList type="oku" darkMode={darkMode} />} />
             <Route path="/giris" element={<Login darkMode={darkMode} />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
+            <Route path="/forgot-password" element={<ForgotPassword darkMode={darkMode}/>} />
             <Route path="/favoriler" element={<MasalList type="favoriler" darkMode={darkMode} />} />
             <Route path="/gecmis" element={<MasalList type="gecmis" darkMode={darkMode} />} />
           </Routes>

@@ -17,7 +17,7 @@ import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { Link } from 'react-router-dom';
 
-const Login = () => {
+const Login = () => { 
   const [tab, setTab] = useState(0);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');

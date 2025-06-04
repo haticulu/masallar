@@ -40,15 +40,12 @@ export function AuthProvider({ children }) {
             email,
             password
         });
-        showAlert('Kayıt başarılı!', 'success');
-        return true;
+        if (response.data === "REGISTER_SUCCESS") {
+          showAlert('Kayıt başarılı!', 'success');
+      }
       } catch (error) {
-        if (error.response?.status === 401) {
-          showAlert('Giriş başarısız: Email veya şifre yanlış!', 'error');
-        } else if (error.response?.status === 400) {
-          showAlert('Bu email adresi ile kayıtlı kullanıcı bulunmaktadır!', 'warning');
-        } else {
-          showAlert('Bir hata oluştu. Lütfen tekrar deneyiniz.', 'error');
+        if (error.response?.data === "EMAIL_EXISTS") {
+            showAlert('Bu email adresi ile kayıtlı kullanıcı bulunmaktadır!', 'warning');
         }
     }
 };
@@ -58,19 +55,16 @@ const login = async (email, password) => {
         const response = await axios.post('http://localhost:8081/api/users/login', {
             email,
             password
-        });
-        
+        }); 
         if (response.data) {
             setCurrentUser(response.data);
             localStorage.setItem('user', JSON.stringify(response.data));
             return response.data;
         }
       } catch (error) {
-        if (error.response?.status === 401) {
+        if (error.response?.data === "LOGIN_FAILED") {  
           showAlert('Giriş başarısız: Email veya şifre yanlış!', 'error');
-        } else {
-          showAlert('Giriş yapılırken bir hata oluştu. Lütfen tekrar deneyiniz.', 'error');
-        }
+      }
        
     }
 };
@@ -84,7 +78,9 @@ const login = async (email, password) => {
     currentUser,
     register,
     login,
-    logout
+    logout,
+    showAlert,       
+    handleAlertClose 
   };
 
   return (
